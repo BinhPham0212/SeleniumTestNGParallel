@@ -77,12 +77,13 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public static void closeDriver(iTestResult iTestResult) {
+    public static void closeDriver(ITestResult iTestResult) {
         if(iTestResult.getStatus() == ITestResult.FAILURE) {
             //Take screenshot
             // Tạo tham chiếu của TakesScreenshot
             CaptureHelper.captureScreenshot(iTestResult.getName());
         }
+        CaptureHelper.stopRecord();
 
         if(DriverManager.getDriver() != null) {
             DriverManager.quit();    //Đóng browser và xóa luôn thread
