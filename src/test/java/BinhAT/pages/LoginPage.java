@@ -3,7 +3,10 @@ package BinhAT.pages;
 import BinhAT.common.BaseTest;
 
 import static BinhAT.keywords.WebUI.*;
+
+import BinhAT.helpers.PropertiesHelper;
 import BinhAT.keywords.WebUI;
+import org.bouncycastle.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -50,17 +53,17 @@ public class LoginPage {
     /**page
      * */
     public DashboardPage login(String email, String password) {
-        openURL(URL);
+        openURL(PropertiesHelper.getValue("url"));
         verifyHeaderPage();
         enterEmail(email);
         enterPassword(password);
         clickOnLoginButton();
-
+        Assert.assertTrue(verifyElementNotPresent(messageErrorEmail,5),"Login không thành công");
         return new DashboardPage();
     }
 
     public void loginInvalidEmail(String email, String password) {
-        openURL(URL);
+        openURL(PropertiesHelper.getValue("url"));
         verifyHeaderPage();
         enterEmail(email);
         enterPassword(password);

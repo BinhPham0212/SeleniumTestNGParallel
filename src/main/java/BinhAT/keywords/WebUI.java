@@ -179,6 +179,16 @@ public class WebUI {
         }
     }
 
+    public static boolean verifyElementNotPresent(By by, int second) {
+        try {
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(second), Duration.ofMillis(500));
+            wait.until(ExpectedConditions.presenceOfElementLocated(by));
+            return false;
+        } catch (TimeoutException e) {
+            return true;
+        }
+    }
+
     public static Boolean checkElementExist(By by) {
         List<WebElement> listElement = getDriver().findElements(by);
 
