@@ -3,16 +3,29 @@ package BinhAT.testcases;
 import BinhAT.common.BaseTest;
 import BinhAT.dataproviders.DataLogin;
 import BinhAT.drivers.DriverManager;
+import BinhAT.helpers.CaptureHelper;
 import BinhAT.helpers.ExcelHelper;
+import BinhAT.listeners.TestListener;
 import BinhAT.pages.LoginPage;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.Hashtable;
-
+@Listeners(TestListener.class)         //Goi class Listener mới thiết lập
 public class LoginTest extends BaseTest {
 
     //Khởi tạo đối tượng dùng chung cho toàn bộ class
     LoginPage loginPage;
+//    @BeforeClass            //Khởi tạo 1 lần và ghi record từ đầu cho 1 class
+//    public void setupStartRecord() {
+//        CaptureHelper.startRecord("LoginTest");
+//    }
+//    @AfterClass
+//    public void tearDownClass() {
+//        CaptureHelper.stopRecord();
+//    }
 
     @Test
     public void loginTestSuccess() {
@@ -56,7 +69,7 @@ public class LoginTest extends BaseTest {
         //truyền driver từ BaseTest
         loginPage = new LoginPage();
         //gọi hàm "Login"
-        loginPage.login(data.get("username"), data.get("password"));
+        loginPage.login(data.get("EMAIL"), data.get("PASSWORD"));
     }
 }
 

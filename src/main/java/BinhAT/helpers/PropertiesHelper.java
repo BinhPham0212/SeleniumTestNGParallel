@@ -12,13 +12,13 @@ public class PropertiesHelper {
     private static String linkFile;
     private static FileInputStream file;
     private static FileOutputStream out;
-    private static String relPropertiesFilePathDefault = "datatest/configs/configs.properties";
+    private static String relPropertiesFilePathDefault = "src/test/Resources/configs/configs.properties";
 
     public static Properties loadAllFiles() {
         LinkedList<String> files = new LinkedList<>();       //List để lưu link
         // Add tất cả file Properties vào đây theo mẫu
-        files.add("datatest/configs/configs.properties");
-        files.add("datatest/configs/data.properties");
+        files.add("src/test/Resources/configs/configs.properties");
+        files.add("src/test/Resources/configs/data.properties");
 
         try {
             properties = new Properties();

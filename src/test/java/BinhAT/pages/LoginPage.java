@@ -13,7 +13,6 @@ import org.testng.Assert;
 
 
 public class LoginPage {
-    private String URL = "https://crm.anhtester.com/admin/authentication";
 
     private String PAGETEXT = "Login";
 

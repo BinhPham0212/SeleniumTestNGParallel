@@ -3,6 +3,7 @@ package BinhAT.common;
 import BinhAT.drivers.DriverManager;
 import BinhAT.helpers.CaptureHelper;
 import BinhAT.helpers.PropertiesHelper;
+import BinhAT.listeners.TestListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,17 +13,14 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.time.Duration;
-
+@Listeners(TestListener.class)
 public class BaseTest {
     @BeforeMethod
     @Parameters({"browser"})
     public static void createDriver(@Optional("chrome") String browser) {
+        System.setProperty("webdriver.http.factory", "jdk-http-client"); //Fix warning Connection reset
         WebDriver driver = setupDriver(browser);
-        PropertiesHelper.loadAllFiles();
         DriverManager.setDriver(driver);   //Set giá trị driver đã được khởi tạo vào ThreadLocal
-        //Set luồng 1 giá trị 1
-        //Set luồng 2 giá trị 2
-
     }
 
     public static WebDriver setupDriver(String browserName) {
@@ -77,13 +75,14 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public static void closeDriver(ITestResult iTestResult) {
-        if(iTestResult.getStatus() == ITestResult.FAILURE) {
-            //Take screenshot
-            // Tạo tham chiếu của TakesScreenshot
-            CaptureHelper.captureScreenshot(iTestResult.getName());
-        }
-        CaptureHelper.stopRecord();
+//    public static void closeDriver(ITestResult iTestResult) {
+    public static void closeDriver() {
+//        if(iTestResult.getStatus() == ITestResult.FAILURE) {
+//            //Take screenshot
+//            // Tạo tham chiếu của TakesScreenshot
+//            CaptureHelper.captureScreenshot(iTestResult.getName());
+//        }
+//        CaptureHelper.stopRecord();
 
         if(DriverManager.getDriver() != null) {
             DriverManager.quit();    //Đóng browser và xóa luôn thread

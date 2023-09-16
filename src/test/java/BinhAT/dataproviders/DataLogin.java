@@ -33,7 +33,7 @@ public class DataLogin {
     @DataProvider(name = "data_provider_login_excel_custom_row", parallel = true)
     public Object[][] dataLoginCRMFromExcelCustomRow() {
         ExcelHelper excelHelper = new ExcelHelper();
-        Object[][] data = excelHelper.getDataHashTable(SystemsHelper.getCurrentDir() + "src/test/Resources/datatest/CRM.xlsx", "Login",2,3);
+        Object[][] data = excelHelper.getDataHashTable(SystemsHelper.getCurrentDir() + "src/test/Resources/datatest/CRM.xlsx", "Login",3,4);
         System.out.println("Login Data from Excel: " + data);
         return data;
     }

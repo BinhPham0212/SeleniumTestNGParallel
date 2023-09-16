@@ -30,14 +30,6 @@ public class TestScreenShot extends BaseTest {
         Assert.assertEquals(DriverManager.getDriver().getTitle(), "Login");
     }
 
-    @AfterMethod
-    public void tearDown(ITestResult iTestResult) {
-        if(iTestResult.getStatus() == ITestResult.FAILURE) {
-            //Take screenshot
-            // Tạo tham chiếu của TakesScreenshot
-            CaptureHelper.captureScreenshot(iTestResult.getName());
-        }
-        CaptureHelper.stopRecord();
-    }
+
 
 }
