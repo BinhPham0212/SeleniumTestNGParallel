@@ -7,11 +7,11 @@ public class ExtentReportManager {
     private static final ExtentReports extentReports = new ExtentReports();
 
     public synchronized static ExtentReports getExtentReports() {
-        ExtentSparkReporter reporter = new ExtentSparkReporter("reports/extentreport/extentreport.html");
+        ExtentSparkReporter reporter = new ExtentSparkReporter("reports/extentreport/extentreport_SuiteLoginTest.html");
         reporter.config().setReportName("Extent Report | Binh AT");
         extentReports.attachReporter(reporter);
         extentReports.setSystemInfo("Framework Name", "Selenium Java | Binh AT");
-        extentReports.setSystemInfo("Author", "ABinh AT");
+        extentReports.setSystemInfo("Author", "Binh AT");
         return extentReports;
     }
 

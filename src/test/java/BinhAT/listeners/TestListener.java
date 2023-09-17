@@ -2,6 +2,7 @@ package BinhAT.listeners;
 
 import BinhAT.helpers.CaptureHelper;
 import BinhAT.helpers.PropertiesHelper;
+import BinhAT.reports.AllureManager;
 import BinhAT.reports.ExtentReportManager;
 import BinhAT.reports.ExtentTestManager;
 import BinhAT.utils.LogUtils;
@@ -26,10 +27,10 @@ public class TestListener implements ITestListener {
     }
     @Override
     public void onFinish(ITestContext result) {
-        LogUtils.info("End testing " + result.getName());
-
+        LogUtils.info("End testing " + result.getName() + "\n====================================");
         //Kết thúc và thực thi Extents Report
         ExtentReportManager.getExtentReports().flush();
+
     }
 
     @Override
@@ -65,6 +66,10 @@ public class TestListener implements ITestListener {
         ExtentTestManager.addScreenShot(result.getName());
         ExtentTestManager.logMessage(Status.FAIL, result.getThrowable().toString());
         ExtentTestManager.logMessage(Status.FAIL, result.getName() + " is failed.");
+        //Allure Report
+        AllureManager.saveTextLog(result.getName() + " is failed.");
+        AllureManager.saveScreenshotPNG();
+
     }
 
     @Override

@@ -1,0 +1,15 @@
+BinhAT\testcases\DashboardTest.class
+BinhAT\testcases\learndataprovider\TestDataProvider.class
+BinhAT\dataproviders\DataLogin.class
+BinhAT\pages\customers\AddCustomerPage.class
+BinhAT\testcases\learnparallel\TestParameters.class
+BinhAT\common\BaseTest.class
+BinhAT\listeners\TestListener.class
+BinhAT\pages\customers\CustomerPage.class
+BinhAT\pages\LoginPage.class
+BinhAT\testcases\CustomerTest.class
+BinhAT\testcases\LoginTest.class
+BinhAT\testcases\learnparallel\TestPrallel.class
+BinhAT\pages\customers\CustomerDetailPage.class
+BinhAT\pages\DashboardPage.class
+BinhAT\testcases\learnScreenshot\TestScreenShot.class

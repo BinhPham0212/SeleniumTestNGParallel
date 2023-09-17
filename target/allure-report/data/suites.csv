@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Sep 17 11:10:19 ICT 2023","Sun Sep 17 11:10:35 ICT 2023","15889","Suite Parallel Login Test","Regression Parallel EDGE","BinhAT.testcases.LoginTest","BinhAT.testcases.LoginTest","loginTestFromDataproviderExcelCustomRow","loginTestFromDataproviderExcelCustomRow",""
+"failed","Sun Sep 17 11:10:19 ICT 2023","Sun Sep 17 11:10:25 ICT 2023","6579","Suite Parallel Login Test","Regression Parallel EDGE","BinhAT.testcases.LoginTest","BinhAT.testcases.LoginTest","loginTestFromDataproviderExcelCustomRow","loginTestFromDataproviderExcelCustomRow",""
+"passed","Sun Sep 17 15:07:46 ICT 2023","Sun Sep 17 15:08:06 ICT 2023","19585","Default Suite","SeleniumTestNGParallel082023","BinhAT.testcases.CustomerTest","BinhAT.testcases.CustomerTest","testEditNewCustomer","testEditNewCustomer",""

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="2" parallel="methods" name="Failed suite [Suite Parallel Login Test]" guice-stage="DEVELOPMENT" verbose="0">
+  <test thread-count="2" parallel="methods" name="Regression Parallel EDGE(failed)" verbose="0">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="BinhAT.testcases.LoginTest">
+        <methods>
+          <include name="loginTestFromDataproviderExcelCustomRow" invocation-numbers="1"/>
+          <include name="closeDriver"/>
+          <include name="createDriver"/>
+        </methods>
+      </class> <!-- BinhAT.testcases.LoginTest -->
+    </classes>
+  </test> <!-- Regression Parallel EDGE(failed) -->
+</suite> <!-- Failed suite [Suite Parallel Login Test] -->

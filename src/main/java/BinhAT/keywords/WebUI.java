@@ -1,6 +1,10 @@
 package BinhAT.keywords;
 
 import BinhAT.drivers.DriverManager;
+import BinhAT.reports.ExtentTestManager;
+import BinhAT.utils.LogUtils;
+import com.aventstack.extentreports.Status;
+import io.qameta.allure.Step;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -30,88 +34,100 @@ public class WebUI {
         System.out.println(message);
     }
 
+    @Step("pen URL: {0}")
     public static void openURL(String URL) {
         getDriver().get(URL);
         waitForPageLoaded();
-        logConsole("Open URL: " + URL);
+        LogUtils.info("Open URL: " + URL);
+        ExtentTestManager.logMessage(Status.PASS,"Open URL: " + URL);
     }
 
     /* Actions class
      */
-
+    @Step("Get Current URL:")
     public static String getCurrentUrl() {
         waitForPageLoaded();
-        logConsole("Get Current URL: " + getDriver().getCurrentUrl());
+        LogUtils.info("Get Current URL: " + getDriver().getCurrentUrl());
+        ExtentTestManager.logMessage(Status.PASS,"Get Current URL: " + getDriver().getCurrentUrl());
+
         return getDriver().getCurrentUrl();
     }
-
+    @Step("Clicked on element {0}")
     public static void clickElement(By by) {
         waitForElementVisible(by);
         getWebElement(by).click();
-        logConsole("Clicked on element " + by);
+        LogUtils.info("Clicked on element " + by);
+        ExtentTestManager.logMessage(Status.PASS,"Clicked on element " + by);
     }
-
+    @Step("Set text {1} on element {0}")
     public static void setText(By by, String value) {
         waitForElementVisible(by);
         getWebElement(by).sendKeys(value);
-        logConsole("Set text " + value + " on element " + by);
+        LogUtils.info("Set text " + value + " on element " + by);
+        ExtentTestManager.logMessage(Status.PASS,"Set text " + value + " on element " + by);
     }
-
+    @Step("Set text {1} on element {0} and enter")
     public static void setTextEnter(By by, String value) {
         waitForElementVisible(by);
         getWebElement(by).sendKeys(value,Keys.ENTER);
-        logConsole("Set text " + value + " on element " + by);
+        LogUtils.info("Set text " + value + " on element " + by);
+        ExtentTestManager.logMessage(Status.PASS,"Set text " + value + " on element " + by);
     }
+
+    @Step("Get text element {0}")
     public static String getTextELement(By by) {
         waitForElementVisible(by);
-        logConsole("Get text element " + by);
-        logConsole("==> Text: " + getWebElement(by).getText());
+        LogUtils.info("Get text element " + by);
+        LogUtils.info("==> Text: " + getWebElement(by).getText());
+        ExtentTestManager.logMessage(Status.PASS,"Get text element " + by);
+        ExtentTestManager.logMessage(Status.INFO,"==> Text: " + getWebElement(by).getText());
         return getWebElement(by).getText();
     }
-
+    @Step("Get attribute {1} value of element {0}")
     public static String getAttributeELement(By by, String attributeName) {
         waitForElementVisible(by);
-        logConsole("Get attribute value of element " + by);
-        logConsole("==> Attribute value: " + getWebElement(by).getAttribute(attributeName));
+        LogUtils.info("Get attribute value of element " + by);
+        LogUtils.info("==> Attribute value: " + getWebElement(by).getAttribute(attributeName));
+        ExtentTestManager.logMessage(Status.PASS,"Get attribute value of element " + by);
+        ExtentTestManager.logMessage(Status.INFO,"==> Attribute value: " + getWebElement(by).getAttribute(attributeName));
         return getWebElement(by).getAttribute(attributeName);
     }
-
+    @Step("Hover on element {0}")
     public static void hoverOnElement(By by) {
         Actions action = new Actions(getDriver());
         action.moveToElement(getWebElement(by));
-        logConsole("Hover on element " + by);
+        LogUtils.info("Hover on element " + by);
+        ExtentTestManager.logMessage(Status.PASS,"Hover on element" + by);
     }
-
+    @Step("Right click on element {0}")
     public static void rightClickElement(By by) {
+        waitForElementVisible(by);
         Actions action = new Actions(getDriver());
         action.contextClick(getWebElement(by));
-        logConsole("Right click on element " + by);
+        LogUtils.info("Right click on element " + by);
+        ExtentTestManager.logMessage(Status.PASS,"Right click on element" + by);
     }
-
+    @Step("Right click on element {0}")
     public static WebElement highLightElement(By by) {
         waitForElementVisible(by);
         // Tô màu border ngoài chính element chỉ định - màu đỏ (có thể đổi màu khác)
         if (getDriver() instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].style.border='3px solid red'", getWebElement(by));
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].style.border='3px solid green'", getWebElement(by));
             sleep(1);
         }
         return getWebElement(by);
     }
 
+    @Step("Scroll to element {0}")
     public static void scrollToElementWithJS(By by) {
         //JavascriptExecutor
         //Find Element trong DOM wait for Element trong DOM
         waitForElementPresent(by);
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].scrollIntoView(true);", getWebElement(by));
-//        logConsole("Scroll to element " + by);
+//        LogUtils.info("Scroll to element " + by);
         //Dùng action class
     }
-
-//    public static void scrollToElementWithAction(By by) {
-//        Actions action = new Actions(getDriver());
-//        action.moveToElement(getWebElement(by)).build().perform();
-//    }
 
     /* Actions class====
      */

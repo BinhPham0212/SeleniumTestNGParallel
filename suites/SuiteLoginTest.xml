@@ -1,13 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite Parallel Test" verbose="2">
-    
-<!--    <listeners>-->
-<!--        <listener class-name="BinhAT.listeners.TestListener"/>-->
-<!--    </listeners>-->
+
     
     <test name="TestParallel1" thread-count="2" parallel="methods">
-        <parameter name="browser" value="edge"/>
+        <parameter name="browser" value="chrome"/>
         <classes>
             <class name="BinhAT.testcases.LoginTest"/>
         </classes>
